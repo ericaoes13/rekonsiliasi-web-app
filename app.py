@@ -1,11 +1,10 @@
-
 import streamlit as st
 import pandas as pd
 
 # Fungsi untuk memuat data dari file yang diunggah
 def load_data(uploaded_file):
     if uploaded_file is not None:
-        data = pd.read_excel(uploaded_file)
+        data = pd.read_excel(uploaded_file, engine='xlrd')  # Gunakan xlrd untuk membaca file Excel
         return data
     return None
 
@@ -77,4 +76,3 @@ if uploaded_invoice_file and uploaded_bank_file:
         st.download_button("Unduh Hasil Rekonsiliasi", result_table.to_csv(index=False), "result.csv", "text/csv")
 else:
     st.warning("Silakan unggah file invoice dan rekening koran untuk memulai rekonsiliasi.")
-    
