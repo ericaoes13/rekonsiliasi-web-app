@@ -4,7 +4,8 @@ import pandas as pd
 # Fungsi untuk memuat data dari file yang diunggah
 def load_data(uploaded_file):
     if uploaded_file is not None:
-        data = pd.read_excel(uploaded_file, engine='xlrd')  # Gunakan xlrd untuk membaca file Excel
+        # Menggunakan engine openpyxl untuk file .xlsx
+        data = pd.read_excel(uploaded_file, engine='openpyxl')  
         return data
     return None
 
